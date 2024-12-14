@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>響應式電子名片</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+        .card {
+            width: 90%; /* 預設寬度為螢幕的 90% */
+            max-width: 400px; /* 最大寬度 400px，適合電腦 */
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            background-color: white;
+            text-align: center;
+            margin: 10px 0; /* 增加上下間距 */
+        }
+        .card img {
+            width: 100%; /* 圖片寬度自適應 */
+            height: auto; /* 高度依比例縮放 */
+        }
+        .card a {
+            display: block;
+            text-decoration: none;
+            color: #007bff;
+            font-size: 16px;
+            padding: 10px;
+            background-color: #f4f4f9;
+            border-top: 1px solid #ddd;
+        }
+        .card a:hover {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <!-- 第一張名片圖片 -->
+        <a href="https://algae.win" target="_blank">
+            <img src="https://jacky995.github.io/NFC/1.jpg" alt="電子名片 1">
+        </a>
+        <!-- 第一張名片前往官網按鈕 -->
+    </div>
+    <div class="card">
+        <!-- 第二張名片圖片 -->
+        <a href="https://algae.win" target="_blank">
+            <img src="https://jacky995.github.io/NFC/2.jpg" alt="電子名片 2">
+        </a>
+        <!-- 第二張名片前往官網按鈕 -->
+    </div>
+</body>
+</html>
