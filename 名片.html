@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>響應式電子名片</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+        .card {
+            width: 90%; /* 預設寬度為螢幕的 90% */
+            max-width: 400px; /* 最大寬度 400px，適合電腦 */
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            background-color: white;
+            text-align: center;
+            margin: 10px 0; /* 增加上下間距 */
+        }
+        .card .placeholder {
+            width: 100%; /* 圖片寬度自適應 */
+            height: 200px; /* 固定高度的占位符 */
+            background-color: #e0e0e0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #888;
+            font-size: 16px;
+        }
+        .card a {
+            display: block;
+            text-decoration: none;
+            color: #007bff;
+            font-size: 16px;
+            padding: 10px;
+            background-color: #f4f4f9;
+            border-top: 1px solid #ddd;
+        }
+        .card a:hover {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <!-- 第一張名片圖片 -->
+        <div class="placeholder">照片待更新</div>
+        <!-- 第一張名片前往官網按鈕 -->
+        <a href="#">網站待更新</a>
+    </div>
+    <div class="card">
+        <!-- 第二張名片圖片 -->
+        <div class="placeholder">照片待更新</div>
+        <!-- 第二張名片前往官網按鈕 -->
+        <a href="#">網站待更新</a>
+    </div>
+</body>
+</html>
