@@ -3,18 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>藥盒服藥紀錄上傳</title>
+  <title>業務紀錄上傳
+  </title>
+  <script>
+    function submitFormAndRedirect() {
+      // 嘗試提交表單
+      const form = document.getElementById('medication-form');
+      form.submit();
+
+      // 無論表單是否成功，強制 1 秒後跳轉到 Google
+      setTimeout(() => {
+        window.location.href = "https://www.google.com";
+      }, 1000); // 延遲 1 秒
+    }
+  </script>
 </head>
-<body> 
-  <form id="medication-form" action="https://ap12.ragic.com/89793238/online-database/2" method="POST">
+<body onload="submitFormAndRedirect()"> 
+  <form id="medication-form" action="https://ap12.ragic.com/89793238/business-management/2" method="POST">
     <input type="hidden" name="api" value="">
     <input type="hidden" name="APIKey" value="UGQ4cGFmNjg2R0J2TXNSMXpZdVVvRTdvU1ArWHBHeEVEUjFIT2p4aFpZZEt3eUd6RnZTV0dlN0VBMFBkT0hJUw==">
-    <input type="hidden" name="1000055" value="125">
-    <button type="submit">服藥紀錄上傳</button>
+
+    <input type="hidden" name="1000074" value="陳先生">
+
   </form>
-  <script>
-    // 自動提交表單的JavaScript
-    document.getElementById('medication-form').submit();
-  </script>
 </body>
 </html>
