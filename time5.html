@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>我們的故事</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'STKaiti', 'Microsoft JhengHei', serif;
+      background: linear-gradient(to bottom right, #fffaf0, #fce4ec);
+      color: #5c3a21;
+      text-align: center;
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    header {
+      padding: 2rem 1rem 1rem;
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      margin: 0;
+      color: #b36b6b;
+    }
+
+    .subtitle {
+      font-size: 1rem;
+      color: #8b5e3c;
+      margin-top: 0.5rem;
+    }
+
+    .section {
+      max-width: 720px;
+      margin: 2rem auto;
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(6px);
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    .video-container {
+      max-width: 720px;
+      margin: 2rem auto;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    }
+
+    video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .highlight {
+      font-weight: bold;
+      color: #c94e50;
+    }
+
+    .footer {
+      margin-top: 3rem;
+      font-size: 0.95rem;
+      color: #aa7e61;
+      font-style: italic;
+      padding-bottom: 2rem;
+    }
+
+    @media screen and (max-width: 600px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+      .section {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>我們的故事</h1>
+    <div class="subtitle">從 2022 年 4 月 9 日開始</div>
+  </header>
+
+  <div class="section">
+    <p>🌸 那天的相遇，像春風輕撫。</p>
+    <p>💍 三年後，我們決定牽手走下去。</p>
+    <p class="highlight">2025 年 4 月 15 日，我們結婚了。</p>
+  </div>
+
+  <div class="video-container">
+    <video controls>
+      <source src="http://jacky995.github.io/NFC/123.mp4" type="video/mp4">
+      您的瀏覽器不支援影片播放。
+    </video>
+  </div>
+
+  <div class="section" id="sinceMarried">
+    ❤️ 我們已一起走過：-- 天 -- 小時 -- 分鐘
+  </div>
+
+  <div class="footer">
+    「曾經滄海難為水，除卻巫山不是雲。」
+  </div>
+
+  <script>
+    const weddingDate = new Date("2025-04-15T00:00:00").getTime();
+    const sinceEl = document.getElementById("sinceMarried");
+
+    function updateTime() {
+      const now = Date.now();
+      const diff = now - weddingDate;
+
+      if (diff > 0) {
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        sinceEl.innerText = `❤️ 我們已一起走過：${days} 天 ${hours} 小時 ${minutes} 分鐘`;
+      }
+    }
+
+    setInterval(updateTime, 1000);
+    updateTime();
+  </script>
+</body>
+</html>
