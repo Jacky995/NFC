@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>羅密歐與茱麗葉的愛情紀念</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'STKaiti', 'Microsoft JhengHei', serif;
+      background: linear-gradient(to bottom right, #fffaf0, #fce4ec);
+      color: #5c3a21;
+      text-align: center;
+      line-height: 1.8;
+    }
+
+    header {
+      padding: 3rem 1rem 2rem;
+      background: rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(6px);
+    }
+
+    h1 {
+      font-size: 2.6rem;
+      color: #b36b6b;
+      margin-bottom: 1rem;
+    }
+
+    .subtitle {
+      font-size: 1.25rem;
+      color: #8b5e3c;
+      max-width: 90%;
+      margin: 0 auto;
+      white-space: pre-line;
+    }
+
+    .section {
+      margin: 2.5rem auto;
+      padding: 1.5rem;
+      max-width: 720px;
+      background: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    .timeline p {
+      font-size: 1.4rem;
+      margin: 1.2rem auto;
+      white-space: pre-line;
+      max-width: 90%;
+    }
+
+    .countdown, .since-married {
+      font-size: 1.6rem;
+      color: #c94e50;
+      font-weight: bold;
+      padding: 1rem 0;
+      max-width: 90%;
+      margin: 0 auto;
+    }
+
+    .footer {
+      margin-top: 3rem;
+      color: #aa7e61;
+      font-style: italic;
+      padding-bottom: 2rem;
+      font-size: 1rem;
+      white-space: pre-line;
+      max-width: 90%;
+      margin: 0 auto;
+    }
+
+    @media screen and (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+      .subtitle, .timeline p, .countdown, .since-married {
+        font-size: 1.15rem;
+      }
+      .section {
+        padding: 1.2rem 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>願得一心人，白首不相離</h1>
+    <div class="subtitle">執子之手，與子偕老。
+從 2022 年 4 月 9 日起，我們的故事緩緩展開⋯</div>
+  </header>
+
+  <div class="section timeline">
+    <p>🌸 山有木兮木有枝，心悅君兮君亦知  
+<strong>2022 年 4 月 9 日</strong>，我們初遇。</p>
+
+    <p>💍 兩情若是久長時，又豈在朝朝暮暮  
+<strong>2025 年 4 月 15 日</strong>，我們締結良緣。</p>
+  </div>
+
+  <div class="section countdown">
+    ❤️ 我們已經結為連理 ❤️
+  </div>
+
+  <div class="section since-married" id="sinceMarried">
+    <!-- 自動更新共度時間 -->
+  </div>
+
+  <div class="footer">
+    曾經滄海難為水，除卻巫山不是雲。
+    <br>
+    所有的等待，只為了與你共赴餘生的浪漫。
+  </div>
+
+  <script>
+    const weddingDate = new Date("2025-04-15T00:00:00").getTime();
+    const sinceMarriedEl = document.getElementById("sinceMarried");
+
+    function updateSinceMarried() {
+      const now = new Date().getTime();
+      const passed = now - weddingDate;
+
+      if (passed > 0) {
+        const days = Math.floor(passed / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((passed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((passed % (1000 * 60 * 60)) / (1000 * 60));
+        sinceMarriedEl.innerText = `我們已攜手共度：${days} 天 ${hours} 小時 ${minutes} 分鐘`;
+      }
+    }
+
+    setInterval(updateSinceMarried, 1000);
+    updateSinceMarried();
+  </script>
+</body>
+</html>
