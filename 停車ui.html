@@ -41,18 +41,20 @@
   <div>
     <input type="text" id="name" placeholder="請輸入帳號，如：陳小姐" />
     <input type="text" id="status" placeholder="請輸入狀態，如：停車" />
+    <input type="text" id="level" placeholder="請輸入訂閱等級，如：白金" />
     <button onclick="sendPost()">送出</button>
   </div>
 
-  <div id="result">請輸入帳號跟狀態</div>
+  <div id="result">請輸入帳號、狀態與等級</div>
 
   <script>
     function sendPost() {
       const name = document.getElementById("name").value.trim();
       const status = document.getElementById("status").value.trim();
+      const level = document.getElementById("level").value.trim();
 
-      if (!name || !status) {
-        document.getElementById("result").textContent = "⚠️ 請輸入完整資料。";
+      if (!name || !status || !level) {
+        document.getElementById("result").textContent = "⚠️ 請輸入完整資料（帳號、狀態、等級）。";
         return;
       }
 
@@ -63,6 +65,7 @@
       formData.append("APIKey", apiKey);
       formData.append("1000106", name);   // 帳號欄位
       formData.append("1000107", status); // 狀態欄位
+      formData.append("1000110", level);  // 訂閱等級欄位
 
       fetch(url, {
         method: "POST",
