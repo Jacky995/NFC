@@ -11,7 +11,7 @@
       padding: 2rem;
       text-align: center;
     }
-    input, button {
+    input, select, button {
       padding: 0.5rem 1rem;
       margin: 0.5rem;
       font-size: 1rem;
@@ -41,7 +41,14 @@
   <div>
     <input type="text" id="name" placeholder="請輸入帳號，如：陳小姐" />
     <input type="text" id="status" placeholder="請輸入狀態，如：停車" />
-    <input type="text" id="level" placeholder="請輸入訂閱等級，如：高級" />
+    <select id="level">
+      <option value="">請選擇訂閱等級</option>
+      <option value="低">低</option>
+      <option value="中">中</option>
+      <option value="高級">高級</option>
+      <option value="special">special</option>
+      <option value="其他">其他</option>
+    </select>
     <button onclick="sendPost()">送出</button>
   </div>
 
@@ -51,7 +58,7 @@
     function sendPost() {
       const name = document.getElementById("name").value.trim();
       const status = document.getElementById("status").value.trim();
-      const level = document.getElementById("level").value.trim();
+      const level = document.getElementById("level").value;
 
       if (!name || !status || !level) {
         document.getElementById("result").textContent = "⚠️ 請輸入完整資料（帳號、狀態、等級）。";
