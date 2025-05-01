@@ -49,15 +49,21 @@
     .timeline-item {
       margin: 1rem 0;
     }
-    .timeline-item img {
-      width: 100%;
-      border-radius: 8px;
-      margin-top: 0.5rem;
-      cursor: pointer;
-      transition: transform 0.3s;
+    .timeline-item p {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
-    .timeline-item img:hover {
-      transform: scale(1.02);
+    .timeline-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 4px;
+      object-fit: cover;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .timeline-icon:hover {
+      transform: scale(1.5);
     }
     .lightbox {
       position: fixed;
@@ -108,16 +114,13 @@
     <section class="timeline">
       <h2>Our Timeline</h2>
       <div class="timeline-item">
-        <p>2023-05-20 — First date</p>
-        <img src="http://jacky995.github.io/NFC/1.2.jpg" alt="first date">
+        <p>2023-05-20 — First date <img src="http://jacky995.github.io/NFC/1.2.jpg" class="timeline-icon" alt="icon"></p>
       </div>
       <div class="timeline-item">
-        <p>2023-08-14 — First trip</p>
-        <img src="http://jacky995.github.io/NFC/1.2.jpg" alt="first trip">
+        <p>2023-08-14 — First trip <img src="http://jacky995.github.io/NFC/1.2.jpg" class="timeline-icon" alt="icon"></p>
       </div>
       <div class="timeline-item">
-        <p>2024-02-14 — Our first Valentine's</p>
-        <img src="http://jacky995.github.io/NFC/1.2.jpg" alt="valentine">
+        <p>2024-02-14 — Our first Valentine's <img src="http://jacky995.github.io/NFC/1.2.jpg" class="timeline-icon" alt="icon"></p>
       </div>
     </section>
 
@@ -145,11 +148,11 @@
     const days = Math.floor(diffTime / (1000 * 60 * 60 * 24));
     document.getElementById("daysTogether").innerText = `Together for ${days} days 💕`;
 
-    const images = document.querySelectorAll(".timeline-item img");
+    const icons = document.querySelectorAll(".timeline-icon");
     const lightbox = document.getElementById("lightbox");
     const lightboxImg = document.getElementById("lightbox-img");
 
-    images.forEach(img => {
+    icons.forEach(img => {
       img.addEventListener("click", () => {
         lightboxImg.src = img.src;
         lightbox.style.display = "flex";
