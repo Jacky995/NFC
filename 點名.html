@@ -37,10 +37,10 @@
       font-size: 1.4rem;
       color: #ff69b4;
     }
-    .timeline, .messages {
+    .timeline, .messages, .memory-gallery {
       margin: 2rem 0;
     }
-    .timeline h2, .messages h2 {
+    .timeline h2, .messages h2, .memory-gallery h2 {
       font-size: 1.2rem;
       color: #e46c9a;
       border-bottom: 2px solid #ffe4ec;
@@ -94,6 +94,24 @@
     .message-box p {
       margin: 0.3rem 0;
     }
+    .slideshow-container {
+      position: relative;
+      width: 100%;
+      height: 250px;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+    .slideshow-container img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+    .slideshow-container img.active {
+      opacity: 1;
+    }
     footer {
       text-align: center;
       font-size: 0.9rem;
@@ -132,6 +150,15 @@
       </div>
     </section>
 
+    <section class="memory-gallery">
+      <h2>Memory Album</h2>
+      <div class="slideshow-container">
+        <img src="http://jacky995.github.io/NFC/1.2.jpg" class="slide active" alt="memory1">
+        <img src="http://jacky995.github.io/NFC/1.1.jpg" class="slide" alt="memory2">
+        <img src="http://jacky995.github.io/NFC/1.2.jpg" class="slide" alt="memory3">
+      </div>
+    </section>
+
     <footer>
       &copy; 2025 Our Love Story. Made with 💕
     </footer>
@@ -162,6 +189,15 @@
     lightbox.addEventListener("click", () => {
       lightbox.style.display = "none";
     });
+
+    // Slideshow
+    const slides = document.querySelectorAll('.slideshow-container img');
+    let current = 0;
+    setInterval(() => {
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+    }, 3000);
   </script>
 </body>
 </html>
