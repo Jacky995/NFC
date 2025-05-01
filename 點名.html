@@ -11,11 +11,14 @@
       font-family: Arial, sans-serif;
       background: #fffafc;
       color: #333;
+      overflow-x: hidden;
     }
     .container {
       max-width: 500px;
       margin: auto;
       padding: 1.5rem;
+      position: relative;
+      z-index: 1;
     }
     header {
       text-align: center;
@@ -83,9 +86,6 @@
       max-height: 90%;
       border-radius: 10px;
     }
-    .gallery, footer {
-      display: none;
-    }
     .message-box {
       background: #fff0f5;
       padding: 1rem;
@@ -107,10 +107,26 @@
       height: 100%;
       object-fit: cover;
       opacity: 0;
-      transition: opacity 1s ease-in-out;
+      transform: scale(1.05) translateY(10px);
+      transition: opacity 1s ease-in-out, transform 1s ease-in-out;
     }
     .slideshow-container img.active {
       opacity: 1;
+      transform: scale(1) translateY(0);
+      z-index: 1;
+    }
+    .falling-icon {
+      position: fixed;
+      top: -5vh;
+      font-size: 20px;
+      animation: fall 8s linear infinite;
+      opacity: 0.8;
+      pointer-events: none;
+      z-index: 0;
+    }
+    @keyframes fall {
+      0% { transform: translateY(-10vh) rotate(0deg); }
+      100% { transform: translateY(110vh) rotate(360deg); }
     }
     footer {
       text-align: center;
@@ -155,7 +171,7 @@
       <div class="slideshow-container">
         <img src="http://jacky995.github.io/NFC/1.2.jpg" class="slide active" alt="memory1">
         <img src="http://jacky995.github.io/NFC/1.1.jpg" class="slide" alt="memory2">
-        <img src="http://jacky995.github.io/NFC/1.2.jpg" class="slide" alt="memory3">
+        <img src="http://jacky995.github.io/NFC/1.3.jpg" class="slide" alt="memory3">
       </div>
     </section>
 
@@ -197,7 +213,20 @@
       slides[current].classList.remove('active');
       current = (current + 1) % slides.length;
       slides[current].classList.add('active');
-    }, 3000);
+    }, 3500);
+
+    // Falling icons
+    const emojis = ["💖", "⭐", "🌙"];
+    function createFallingIcon() {
+      const icon = document.createElement("div");
+      icon.className = "falling-icon";
+      icon.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+      icon.style.left = Math.random() * 100 + "vw";
+      icon.style.fontSize = (Math.random() * 10 + 20) + "px";
+      document.body.appendChild(icon);
+      setTimeout(() => icon.remove(), 8000);
+    }
+    setInterval(createFallingIcon, 500);
   </script>
 </body>
 </html>
