@@ -37,26 +37,48 @@
       font-size: 1.4rem;
       color: #ff69b4;
     }
-    .timeline, .messages, .gallery {
+    .timeline, .messages {
       margin: 2rem 0;
     }
-    .timeline h2, .messages h2, .gallery h2 {
+    .timeline h2, .messages h2 {
       font-size: 1.2rem;
       color: #e46c9a;
       border-bottom: 2px solid #ffe4ec;
       padding-bottom: 0.3rem;
     }
-    .timeline ul {
-      list-style: none;
-      padding: 0;
+    .timeline-item {
+      margin: 1rem 0;
     }
-    .timeline li {
-      margin: 0.8rem 0;
-    }
-    .gallery img {
+    .timeline-item img {
       width: 100%;
       border-radius: 8px;
-      margin: 0.5rem 0;
+      margin-top: 0.5rem;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .timeline-item img:hover {
+      transform: scale(1.02);
+    }
+    .lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      display: none;
+    }
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+    }
+    .gallery, footer {
+      display: none;
     }
     .message-box {
       background: #fff0f5;
@@ -77,7 +99,7 @@
 <body>
   <div class="container">
     <header>
-      <h1>Boy & Ping</h1>
+      <h1>Jacky & Emma</h1>
       <p>Every moment with you is a treasure 💖</p>
     </header>
 
@@ -85,17 +107,18 @@
 
     <section class="timeline">
       <h2>Our Timeline</h2>
-      <ul>
-        <li>2023-05-20 — First date 🌸</li>
-        <li>2023-08-14 — First trip ✈️</li>
-        <li>2024-02-14 — Our first Valentine's 💝</li>
-      </ul>
-    </section>
-
-    <section class="gallery">
-      <h2>Photo Gallery</h2>
-      <img src="http://jacky995.github.io/NFC/1.1.jpg" alt="photo1">
-      <img src="http://jacky995.github.io/NFC/1.2.jpg" alt="photo2">
+      <div class="timeline-item">
+        <p>2023-05-20 — First date</p>
+        <img src="http://jacky995.github.io/NFC/1.2.jpg" alt="first date">
+      </div>
+      <div class="timeline-item">
+        <p>2023-08-14 — First trip</p>
+        <img src="http://jacky995.github.io/NFC/1.2.jpg" alt="first trip">
+      </div>
+      <div class="timeline-item">
+        <p>2024-02-14 — Our first Valentine's</p>
+        <img src="http://jacky995.github.io/NFC/1.2.jpg" alt="valentine">
+      </div>
     </section>
 
     <section class="messages">
@@ -111,38 +134,31 @@
     </footer>
   </div>
 
+  <div class="lightbox" id="lightbox">
+    <img id="lightbox-img" src="" alt="large view">
+  </div>
+
   <script>
-    const startDate = new Date("2023-05-20"); // 可替換成用戶的交往日
+    const startDate = new Date("2023-05-20");
     const today = new Date();
     const diffTime = today - startDate;
     const days = Math.floor(diffTime / (1000 * 60 * 60 * 24));
     document.getElementById("daysTogether").innerText = `Together for ${days} days 💕`;
-  </script>
-  <script>
-    const emojis = ["💖", "⭐", "🌙"];
-    function createEmoji() {
-      const emoji = document.createElement("div");
-      emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
-      emoji.style.position = "fixed";
-      emoji.style.left = Math.random() * 100 + "vw";
-      emoji.style.top = "-3vh";
-      emoji.style.fontSize = Math.random() * 12 + 18 + "px";
-      emoji.style.zIndex = "999";
-      emoji.style.opacity = "0.8";
-      emoji.style.pointerEvents = "none";
-      emoji.style.transition = "transform 5s linear, opacity 5s ease-out";
-      document.body.appendChild(emoji);
-  
-      requestAnimationFrame(() => {
-        emoji.style.transform = `translateY(100vh) rotate(${Math.random() * 360}deg)`;
-        emoji.style.opacity = "0";
+
+    const images = document.querySelectorAll(".timeline-item img");
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
+
+    images.forEach(img => {
+      img.addEventListener("click", () => {
+        lightboxImg.src = img.src;
+        lightbox.style.display = "flex";
       });
-  
-      setTimeout(() => emoji.remove(), 5000);
-    }
-  
-    setInterval(createEmoji, 500); // 每 0.5 秒掉一個
+    });
+
+    lightbox.addEventListener("click", () => {
+      lightbox.style.display = "none";
+    });
   </script>
-  
 </body>
 </html>
