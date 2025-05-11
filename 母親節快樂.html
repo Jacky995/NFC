@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>母親節快樂</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #ffe4e1, #fff0f5);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .message {
+      font-size: 2rem;
+      color: #c2185b;
+      text-align: center;
+      animation: fadeInUp 2s ease-in-out;
+    }
+
+    .decoration {
+      font-size: 1.5rem;
+      color: #e91e63;
+      margin-top: 10px;
+      animation: float 3s infinite ease-in-out;
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <div class="message">母親節快樂</div>
+    <div class="decoration">💐🎀🌸</div>
+  </div>
+</body>
+</html>
