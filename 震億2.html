@@ -9,6 +9,42 @@
   <meta name="author" content="J.KEY">
   <link rel="icon" href="https://cdn.bniconnectglobal.com/new_template/assets/appicon/favicon.ico">
   <style>
+    .carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 20px;
+  padding: 20px 0;
+  scroll-behavior: smooth;
+}
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+.carousel-card {
+  flex: 0 0 300px;
+  scroll-snap-align: start;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 20px;
+  text-align: center;
+}
+.carousel-card img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+.carousel-card h3 {
+  margin: 10px 0 5px;
+  color: #b80000;
+}
+.carousel-card p {
+  font-size: 0.90em;
+  color: #444;
+}
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -98,6 +134,20 @@
       padding: 30px 10px;
       font-size: 0.9em;
     }
+    
+    .contact-btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #b80000;
+      color: #fff;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .contact-btn:hover {
+      background-color: #8c0000;
+    }
   </style>
 </head>
 <body>
@@ -118,10 +168,50 @@
 
 
   <section id="intro">
-    <h2>關於我們</h2>
+    <h2><a href="https://chatgpt.com/share/6835031c-0af4-8002-9114-240c57c04987" style="color: #b80000; text-decoration: none;">大AI時代，連AI都選擇BNI，你呢?</a></h2>
+
     <p>震億分會是BNI體系下的活躍分支，匯聚多元產業的菁英夥伴，致力於以『Givers Gain®』精神打造互信、互利的商務合作平台。</p>
   </section>
+  <section id="advisors">
+    <h2>四大董事顧問</h2>
+    <div class="carousel">
 
+      <div class="carousel-card">
+        <img src="https://jacky995.github.io/NFC/籃原達.jpg" alt="籃原達">
+        <h3>籃原達</h3>
+        <p>我是籃原達，代表科技廚具<br>五大家居品牌VIP經銷商</p>
+      </div>          
+          <div class="carousel-card">
+            <img src="https://jacky995.github.io/NFC/羅絲佳.jpg" alt="羅絲佳">
+            <h3>羅絲佳</h3>
+            <p>
+              牙科活動公關<br>震玖健康生物科技有限公司 行銷總監
+              <br>
+              國際蘭馨交流協會 2022-2023 理事長
+            </p>
+          </div>
+          
+      <div class="carousel-card">
+        <img src="https://jacky995.github.io/NFC/王培堂2.jpg" alt="王培堂">
+        <h3>王培堂</h3>
+        <p>考試院高考冷凍空調技師<br>冷凍空調甲級技術士<br>國立勤益科大冷凍空調與能源系兼任講師<br>臺中市直轄市工程技術顧問公會 理事長</p>
+      </div>
+
+
+
+
+        <div class="carousel-card">
+            <img src="https://jacky995.github.io/NFC/蔡佳玲.jpg" alt="蔡佳玲">
+            <h3>蔡佳玲</h3>
+            <p>
+              國際同濟會第2526分會秘書長<br>
+              蘇拉蜜婚紗設計總監<br>台灣小姐初賽會長
+              
+            </p>
+          </div>
+
+    </div>
+  </section>
   <section id="chain">
     <h2>產業鏈導覽</h2>
     <ul>
@@ -138,15 +228,8 @@
     </ul>
   </section>
 
-  <section id="advisors">
-    <h2>四大董事顧問</h2>
-    <ul>
-      <li>李小帥｜晶新科技董事長｜產業策略顧問</li>
-      <li>李小美｜陽光能源創辦人｜綠能整合顧問</li>
-      <li>張大壯｜新生醫研技術長｜創新技術顧問</li>
-      <li>陳大帥｜律師｜法律風控顧問</li>
-    </ul>
-  </section>
+
+  
 
   <section id="events">
     <h2>活動與課程</h2>
@@ -161,7 +244,6 @@
     <h2>加入我們</h2>
     <p>如果你渴望拓展人脈、尋找合作夥伴並獲得真誠推薦，歡迎聯絡我們或參與一場分會早會！</p>
   </section>
-
   <footer>
     <p>© 2025 BNI 震億分會｜設計與維護：J.KEY｜感謝每位共築價值的夥伴</p>
   </footer>
