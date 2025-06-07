@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <title>畢業快樂 🎓</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom right, #fceabb, #f8b500);
+      font-family: 'Noto Sans TC', sans-serif;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 4em;
+      animation: fadeInUp 2s ease;
+    }
+
+    p {
+      font-size: 1.5em;
+      margin-top: 1rem;
+      animation: fadeInUp 3s ease;
+    }
+
+    .hearts {
+      position: absolute;
+      bottom: 10%;
+      display: flex;
+      gap: 20px;
+      animation: floatUp 4s infinite ease-in-out;
+    }
+
+    .heart {
+      font-size: 2em;
+      color: red;
+      opacity: 0.7;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        transform: translateY(30px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes floatUp {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>黃先生畢業快樂！🎉</h1>
+  <p>願你前程似錦，所遇皆溫柔。</p>
+
+  <div class="hearts">
+    <div class="heart">❤️</div>
+    <div class="heart">💛</div>
+    <div class="heart">💖</div>
+  </div>
+</body>
+</html>
