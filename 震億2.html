@@ -223,21 +223,27 @@
 *
     </div>
   </section>
-  <section id="chain">
-    <h2>產業鏈導覽</h2>
-    <ul>
-      <li>半導體（王大明｜晶新科技）</li>
-      <li>綠能產業（李翠華｜陽光能源）</li>
-      <li>生技醫療（張育誠｜新生醫研）</li>
-      <li>數位行銷（陳小恩｜數海行銷）</li>
-      <li>電機電子（黃智偉｜睿電科技）</li>
-      <li>法律服務（施竣凱｜合署律師）</li>
-      <li>教育顧問（林詠翔｜慧智學院）</li>
-      <li>文化設計（J.KEY｜NFC 記憶禮）</li>
-      <li>金融投資（陳大帥｜金富投資）</li>
-      <li class="missing">物流供應鏈（招募中）</li>
-    </ul>
-  </section>
+
+    <section id="teams">
+  <h2>想找更多商業夥伴嗎</h2>
+  <div class="team-grid">
+    <div class="team-card"><span>⭐</span><p>里民服務組</p></div>
+    <div class="team-card"><span>⭐</span><p>婚禮服務組</p></div>
+    <div class="team-card"><span>⭐</span><p>高資產服務組</p></div>
+    <div class="team-card"><span>⭐</span><p>居家裝修服務組</p></div>
+    <div class="team-card"><span>⭐</span><p>企業營運組</p></div>
+    <div class="team-card"><span>⭐</span><p>銀髮樂齡組</p></div>
+    <div class="team-card"><span>⭐</span><p>健康產業組</p></div>
+    <div class="team-card"><span>⭐</span><p>智能居家服務組</p></div>
+    <div class="team-card"><span>⭐</span><p>廠房建置組</p></div>
+    <div class="team-card"><span>⭐</span><p>貴婦服務組</p></div>
+    <div class="team-card"><span>⭐</span><p>活動服務組</p></div>
+    <div class="team-card"><span>⭐</span><p>餐飲物流服務組</p></div>
+    <div class="team-card"><span>⭐</span><p>品牌行銷服務組</p></div> 
+     
+
+  </div>
+</section>
 
 
   
@@ -258,6 +264,51 @@
   <footer>
     <p>© 2025 BNI 震億分會｜設計與維護：J.KEY｜感謝每位共築價值的夥伴</p>
   </footer>
+
+
+<style>
+  #teams {
+    padding: 40px 20px;
+    background-color: #fafafa;
+    text-align: center;
+  }
+  #teams h2 {
+    font-size: 1.8em;
+    margin-bottom: 30px;
+    color: #b80000;
+  }
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .team-card {
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 30px 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease;
+    cursor: pointer;
+  }
+  .team-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  .team-card span {
+    font-size: 2rem;
+    color: #b80000;
+  }
+  .team-card p {
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 1rem;
+    color: #222;
+  }
+</style>
+
 
 </body>
 </html>
