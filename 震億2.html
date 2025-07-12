@@ -230,28 +230,37 @@
     </div>
   </section>
 
-    <section id="teams">
+<section id="teams">
   <h2>想找更多商業夥伴嗎</h2>
-  <div class="team-grid">
-    <div class="team-card"><span>⭐</span><p>里民服務組</p></div>
-  <a href="https://jacky995.github.io//BNI/BNI/w.html" class="team-card">
-    <span>⭐</span><p>婚禮服務組</p>
-  </a>
-    <div class="team-card"><span>⭐</span><p>高資產服務組</p></div>
-    <div class="team-card"><span>⭐</span><p>居家裝修服務組</p></div>
-    <div class="team-card"><span>⭐</span><p>企業營運組</p></div>
-    <div class="team-card"><span>⭐</span><p>銀髮樂齡組</p></div>
-    <div class="team-card"><span>⭐</span><p>健康產業組</p></div>
-    <div class="team-card"><span>⭐</span><p>智能居家服務組</p></div>
-    <div class="team-card"><span>⭐</span><p>廠房建置組</p></div>
-    <div class="team-card"><span>⭐</span><p>貴婦服務組</p></div>
-    <div class="team-card"><span>⭐</span><p>活動服務組</p></div>
-    <div class="team-card"><span>⭐</span><p>餐飲物流服務組</p></div>
-    <div class="team-card"><span>⭐</span><p>品牌行銷服務組</p></div> 
-     
-
-  </div>
+  <div id="groupGrid" class="team-grid"></div>
 </section>
+
+<script>
+  const API_URL = "https://script.google.com/macros/s/AKfycbyXtuzXVKuMAG2lotBe3OA73b8nSUaaqyQU4Xtm8Oca_xGpzcNSvINWSlHNLZ-CmncR/exec"; // 改成你的 Apps Script 網址
+
+  fetch(API_URL)
+    .then(res => res.json())
+    .then(data => {
+      const groupGrid = document.getElementById("groupGrid");
+      const groups = {};
+
+      data.forEach(item => {
+        if (!groups[item.group]) groups[item.group] = [];
+        groups[item.group].push(item);
+      });
+
+      Object.keys(groups).forEach(groupName => {
+        const div = document.createElement("div");
+        div.className = "team-card";
+        div.innerHTML = `<span>⭐</span><p>${groupName}</p>`;
+        div.onclick = () => {
+          const groupData = encodeURIComponent(groupName);
+          window.location.href = `https://jacky995.github.io/BNI/BNI/group.html?group=${groupData}`;
+        };
+        groupGrid.appendChild(div);
+      });
+    });
+</script>
 
 
   
