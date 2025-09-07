@@ -1,77 +1,265 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8" />
-  <title>畢業快樂 🎓</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>皇大玄，生日快樂！</title>
+  <meta name="description" content="送給皇大玄的生日祝福卡片 ✨" />
+  <meta property="og:title" content="皇大玄，生日快樂！" />
+  <meta property="og:description" content="送給皇大玄的一頁式生日祝福卡片 🎂" />
+  <meta property="og:type" content="website" />
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(to bottom right, #fceabb, #f8b500);
-      font-family: 'Noto Sans TC', sans-serif;
-      color: #333;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      overflow: hidden;
+    :root{
+      --bg1:#0f0c29; --bg2:#302b63; --bg3:#24243e;
+      --card-bg: rgba(255,255,255,0.08);
+      --glass: rgba(255,255,255,0.16);
+      --accent:#ffd166; /* 溫暖金色 */
+      --accent-2:#7bdff2; /* 清爽藍綠 */
+      --text:#f6f7fb;
+      --muted:#cdd3f5;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 22px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family: ui-rounded, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans TC", "PingFang TC", "Hiragino Sans", "Microsoft JhengHei", sans-serif;
+      color:var(--text);
+      background: radial-gradient(1200px 800px at 20% -10%, #1b144a 0%, transparent 30%),
+                  radial-gradient(1000px 600px at 110% 10%, #12273a 0%, transparent 35%),
+                  linear-gradient(135deg, var(--bg1), var(--bg2) 55%, var(--bg3));
+      overflow:hidden;
+    }
+    /* 背景飄動光點 */
+    .orb{ position:absolute; inset:auto; width:14px; height:14px; border-radius:50%;
+      background: radial-gradient(circle at 30% 30%, #fff, #fff0 60%);
+      filter: blur(1px); opacity:.25; animation: float 12s ease-in-out infinite; }
+    .orb:nth-child(odd){ width:10px; height:10px; animation-duration:16s; opacity:.18 }
+    @keyframes float{ 0%{ transform: translateY(0) translateX(0)} 50%{ transform: translateY(-30px) translateX(20px)} 100%{ transform: translateY(0) translateX(0)} }
+
+    /* 主容器 */
+    .wrap{ position:relative; min-height:100%; display:grid; place-items:center; padding:28px }
+
+    .card{
+      width:min(880px, 92vw);
+      background:linear-gradient(180deg, var(--glass), rgba(255,255,255,0.06));
+      border:1px solid rgba(255,255,255,0.18);
+      backdrop-filter: blur(12px);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: clamp(22px, 4vw, 40px);
+      position:relative;
+      overflow:hidden;
+    }
+    .card:before{ content:""; position:absolute; inset:-2px; border-radius:inherit; padding:1px; background:
+      linear-gradient(120deg, rgba(255,255,255,.35), rgba(255,255,255,0) 30%, rgba(255,255,255,.2) 60%, rgba(255,255,255,0));
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor; mask-composite: exclude; pointer-events:none;
     }
 
-    h1 {
-      font-size: 4em;
-      animation: fadeInUp 2s ease;
+    h1{ margin:0 0 .2em; font-size: clamp(32px, 6.2vw, 64px); line-height:1.05; letter-spacing:.5px; }
+    .gradient{ background: linear-gradient(90deg, #fff 0%, var(--accent) 50%, #fff 100%);
+      -webkit-background-clip:text; background-clip:text; color:transparent; text-shadow: 0 1px 10px rgba(255,255,255,.08); }
+
+    .subtitle{ font-size: clamp(16px, 2.6vw, 22px); color:var(--muted); margin:0 0 20px }
+
+    .badge{
+      display:inline-flex; align-items:center; gap:8px; font-size:14px; padding:8px 12px; border-radius:999px;
+      background: rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.18);
+    }
+    .badge .dot{ width:8px; height:8px; border-radius:50%; background: var(--accent); box-shadow:0 0 12px var(--accent) }
+
+    .msg{
+      font-size: clamp(15px, 2.2vw, 18px);
+      line-height:1.9; color:#e9ebff; margin: 16px 0 22px;
     }
 
-    p {
-      font-size: 1.5em;
-      margin-top: 1rem;
-      animation: fadeInUp 3s ease;
-    }
+    .cta-row{ display:flex; flex-wrap:wrap; gap:12px; margin-top:10px }
+    .btn{ cursor:pointer; border:0; padding:12px 18px; border-radius:14px; font-weight:700; letter-spacing:.4px; transition: transform .08s ease, box-shadow .2s ease, background .3s ease; }
+    .btn-primary{ background:linear-gradient(135deg, #ffd166, #ffb703); color:#2a1b00; box-shadow: 0 8px 24px rgba(255,179,3,.28) }
+    .btn-primary:hover{ transform: translateY(-1px) }
+    .btn-ghost{ background:rgba(255,255,255,.08); color:#fff; border:1px solid rgba(255,255,255,.14)}
 
-    .hearts {
-      position: absolute;
-      bottom: 10%;
-      display: flex;
-      gap: 20px;
-      animation: floatUp 4s infinite ease-in-out;
-    }
+    .footer{ display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:22px; color:#b9c1ff; font-size:13px; flex-wrap:wrap }
+    .footer small{opacity:.8}
 
-    .heart {
-      font-size: 2em;
-      color: red;
-      opacity: 0.7;
-    }
+    /* 彩帶 Canvas */
+    #confetti{ position:fixed; inset:0; pointer-events:none; z-index:5 }
 
-    @keyframes fadeInUp {
-      from {
-        transform: translateY(30px);
-        opacity: 0;
-      }
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
+    /* 氣球 */
+    .balloon{ position:absolute; bottom:-120px; width:60px; aspect-ratio:3/4; background: radial-gradient(50% 60% at 50% 38%, #ffffff, #fff0 60%), var(--accent-2);
+      border-radius:48% 52% 50% 50%/60% 60% 40% 40%; box-shadow: inset -8px -10px 18px rgba(0,0,0,.18);
+      animation: rise linear infinite; opacity:.8
     }
+    .balloon:after{ content:""; position:absolute; bottom:-16px; left:50%; width:2px; height:70px; background: rgba(255,255,255,.4) ; transform: translateX(-50%);
+    }
+    @keyframes rise{ from{ transform: translateY(0) } to{ transform: translateY(-120vh) } }
 
-    @keyframes floatUp {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-10px);
-      }
-    }
+    /* 輕微入場 */
+    .pop{ animation: pop .6s ease-out both }
+    @keyframes pop{ from{ transform: translateY(12px) scale(.98); opacity:0 } to{ transform: translateY(0) scale(1); opacity:1 } }
+
+    /* 手機安全區 */
+    @media (max-width:480px){ .footer{ gap:8px; justify-content:center } }
   </style>
 </head>
 <body>
-  <h1>黃先生  生日快樂！🎉</h1>
-  <p>願你前程似錦，所遇皆溫柔。</p>
+  <canvas id="confetti"></canvas>
 
-  <div class="hearts">
-    <div class="heart">❤️</div>
-    <div class="heart">💛</div>
-    <div class="heart">💖</div>
-  </div>
+  <!-- 背景光點 -->
+  <div class="orb" style="left:8%; top:18%"></div>
+  <div class="orb" style="left:22%; top:72%"></div>
+  <div class="orb" style="left:76%; top:26%"></div>
+  <div class="orb" style="left:88%; top:66%"></div>
+
+  <!-- 氣球（多顆、不同速度與位置） -->
+  <div class="balloon" style="left:8%; animation-duration:16s; background: radial-gradient(50% 60% at 50% 38%, #fff, #fff0 60%), #ff7eb6"></div>
+  <div class="balloon" style="left:22%; animation-duration:19s; background: radial-gradient(50% 60% at 50% 38%, #fff, #fff0 60%), #7bdff2"></div>
+  <div class="balloon" style="left:62%; animation-duration:21s; background: radial-gradient(50% 60% at 50% 38%, #fff, #fff0 60%), #caffbf"></div>
+  <div class="balloon" style="left:82%; animation-duration:18s; background: radial-gradient(50% 60% at 50% 38%, #fff, #fff0 60%), #ffd6a5"></div>
+
+  <main class="wrap">
+    <section class="card pop">
+      <div class="badge"><span class="dot"></span>Happy Birthday</div>
+      <h1 class="gradient">皇大玄，生日快樂！</h1>
+      <p class="subtitle">🎂 願你新的一歲，平安喜樂、心想事成、一路發光。</p>
+      <p class="msg">
+        在這個屬於你的日子裡，祝你勇敢追夢、保持好奇、持續升級自己。<br/>
+        願每個小小的步伐都指向更好的你，每份努力都被世界看見。<br/>
+        祝福：健康 x 靈感 x 幸福感 &mdash; 三倍暴擊！
+      </p>
+      <div class="cta-row">
+        <button class="btn btn-primary" id="btnBoom">放煙火 ✨</button>
+        <button class="btn btn-ghost" id="btnConfetti">再撒一次彩帶 🎉</button>
+        <button class="btn btn-ghost" id="btnCopy">複製祝福文字 📋</button>
+      </div>
+      <div class="footer">
+        <small>Made with ❤ for <strong>皇大玄</strong></small>
+        <small id="date"></small>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // ====== 日期 ======
+    (function(){
+      const el = document.getElementById('date');
+      const d = new Date();
+      const pad = (n)=> String(n).padStart(2,'0');
+      el.textContent = `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+    })();
+
+    // ====== Confetti 簡易版 ======
+    const cvs = document.getElementById('confetti');
+    const ctx = cvs.getContext('2d');
+    let W, H, pieces = [], rafId;
+    const colors = ['#ffd166','#ff7eb6','#7bdff2','#caffbf','#bdb2ff','#fdef77','#f4a261','#90e0ef'];
+
+    function resize(){ W = cvs.width = window.innerWidth; H = cvs.height = window.innerHeight }
+    window.addEventListener('resize', resize); resize();
+
+    function spawn(n=180){
+      for(let i=0;i<n;i++){
+        pieces.push({
+          x: Math.random()*W,
+          y: -20 - Math.random()*H*0.6,
+          r: 6 + Math.random()*8,
+          s: 1 + Math.random()*2, // speed
+          a: Math.random()*Math.PI*2,
+          va: 0.02 + Math.random()*0.06,
+          col: colors[(Math.random()*colors.length)|0]
+        });
+      }
+    }
+
+    function tick(){
+      ctx.clearRect(0,0,W,H);
+      for(let p of pieces){
+        p.y += p.s; p.a += p.va; p.x += Math.sin(p.a)*0.8;
+        ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.a);
+        ctx.fillStyle = p.col; ctx.fillRect(-p.r*0.6, -p.r*0.3, p.r, p.r*0.6);
+        ctx.restore();
+      }
+      pieces = pieces.filter(p=> p.y < H+40);
+      rafId = requestAnimationFrame(tick);
+    }
+
+    function burst(times=3){
+      for(let i=0;i<times;i++) setTimeout(()=>spawn(140), i*240);
+      if(!rafId) tick();
+    }
+
+    // 初始彩帶
+    burst(4);
+
+    // ====== 煙火（簡化版粒子） ======
+    function firework(x=W/2, y=H*0.6, color){
+      const count = 120, speed = 3.2, life= 70 + Math.random()*40;
+      for(let i=0;i<count;i++){
+        const angle = (Math.PI*2)*i/count;
+        pieces.push({
+          x, y, r: 2 + Math.random()*3, s: speed, a: angle,
+          va: 0, col: color || colors[(Math.random()*colors.length)|0],
+          vx: Math.cos(angle)*speed*(0.6+Math.random()*0.8),
+          vy: Math.sin(angle)*speed*(0.6+Math.random()*0.8),
+          ttl: life, fw:true
+        });
+      }
+    }
+
+    // 增強 tick 處理煙火重力/衰減
+    const _tick = tick;
+    function tickFW(){
+      ctx.clearRect(0,0,W,H);
+      for(let p of pieces){
+        if(p.fw){
+          p.ttl--; p.vy += 0.02; // 重力
+          p.x += p.vx; p.y += p.vy; p.r *= 0.986;
+          if(p.ttl<=0 || p.r<0.4) { p.y = H+100; } // 讓它被過濾掉
+          ctx.beginPath(); ctx.arc(p.x,p.y,Math.max(0.6,p.r),0,Math.PI*2);
+          ctx.fillStyle = p.col; ctx.globalAlpha = Math.max(0.2, p.ttl/120);
+          ctx.fill(); ctx.globalAlpha = 1;
+        } else {
+          p.y += p.s; p.a += p.va; p.x += Math.sin(p.a)*0.8;
+          ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.a);
+          ctx.fillStyle = p.col; ctx.fillRect(-p.r*0.6, -p.r*0.3, p.r, p.r*0.6);
+          ctx.restore();
+        }
+      }
+      pieces = pieces.filter(p=> p.y < H+40);
+      rafId = requestAnimationFrame(tickFW);
+    }
+
+    // 改用強化版動畫循環
+    cancelAnimationFrame(rafId); rafId = null; tickFW();
+
+    // ====== 互動 ======
+    document.getElementById('btnConfetti').addEventListener('click', ()=> burst(3));
+
+    document.getElementById('btnBoom').addEventListener('click', (e)=>{
+      const rect = e.target.getBoundingClientRect();
+      const fx = rect.left + rect.width/2; const fy = rect.top;
+      firework(fx, fy);
+      setTimeout(()=> firework(fx + (Math.random()*160-80), fy - 20), 220);
+      setTimeout(()=> firework(fx + (Math.random()*220-110), fy - 10), 420);
+    });
+
+    document.getElementById('btnCopy').addEventListener('click', async ()=>{
+      const text = `皇大玄，生日快樂！\n\n願你新的一歲平安喜樂、身心都升級。\n每個小步都指向偉大的你，持續發光！🎂✨`;
+      try{ await navigator.clipboard.writeText(text); toast('祝福文字已複製！'); }
+      catch{ toast('無法複製，請手動選取文字'); }
+    });
+
+    // 小小提示泡泡
+    function toast(msg){
+      const t = document.createElement('div');
+      t.textContent = msg; t.style.cssText = `
+        position:fixed; left:50%; top:18px; transform:translateX(-50%);
+        background:rgba(0,0,0,.6); color:#fff; padding:10px 14px; border-radius:12px; backdrop-filter: blur(6px);
+        border:1px solid rgba(255,255,255,.2); box-shadow:${getComputedStyle(document.documentElement).getPropertyValue('--shadow')}; z-index:9; opacity:0; transition:.25s;`;
+      document.body.appendChild(t); requestAnimationFrame(()=>{ t.style.opacity = 1; });
+      setTimeout(()=>{ t.style.opacity = 0; setTimeout(()=> t.remove(), 250); }, 1400);
+    }
+  </script>
 </body>
 </html>
